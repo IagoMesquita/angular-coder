@@ -10,8 +10,8 @@ import { IProduct } from "../product.model";
 })
 export class ProductCreateComponent implements OnInit {
   product: IProduct = {
-    name: "Produto do Angular",
-    price: 5000,
+    name: "",
+    price: null,
   };
 
   constructor(private productService: ProductService, private router: Router) {}
