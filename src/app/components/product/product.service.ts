@@ -8,7 +8,6 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ProductService {
-
   private baseUrl = "http://localhost:3001/products";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
@@ -21,11 +20,19 @@ export class ProductService {
     });
   }
 
-  create(product: IProduct): Observable<IProduct>{
+  create(product: IProduct): Observable<IProduct> {
     return this.http.post<IProduct>(this.baseUrl, product);
   }
 
   read(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.baseUrl)
+    return this.http.get<IProduct[]>(this.baseUrl);
+  }
+
+  readById(product: IProduct): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.baseUrl}/${product.id}`);
+  }
+
+  update(product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(`${this.baseUrl}/${product.id}`, product);
   }
 }
