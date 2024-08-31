@@ -28,8 +28,8 @@ export class ProductService {
     return this.http.get<IProduct[]>(this.baseUrl);
   }
 
-  readById(product: IProduct): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.baseUrl}/${product.id}`);
+  readById(id: string): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.baseUrl}/${id}`);
   }
 
   update(product: IProduct): Observable<IProduct> {
