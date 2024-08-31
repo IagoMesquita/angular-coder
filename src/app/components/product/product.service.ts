@@ -14,9 +14,10 @@ export class ProductService {
 
   showMessage(msg: string): void {
     this.snackBar.open(msg, "x", {
-      duration: 3000,
+      duration: 300000,
       horizontalPosition: "right",
       verticalPosition: "top",
+      panelClass: ["msg-success"]
     });
   }
 
@@ -34,5 +35,9 @@ export class ProductService {
 
   update(product: IProduct): Observable<IProduct> {
     return this.http.put<IProduct>(`${this.baseUrl}/${product.id}`, product);
+  }
+
+  delete(product: IProduct): Observable<IProduct> {
+    return this.http.delete<IProduct>(`${this.baseUrl}/${product.id}`)
   }
 }
